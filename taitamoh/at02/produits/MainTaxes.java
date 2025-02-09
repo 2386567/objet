@@ -1,7 +1,10 @@
 package taitamoh.at02.produits;
+import java.util.Scanner;
+
 import taitamoh.at02.produits.taxes;
 public class MainTaxes {
 public static void main(String[] args) {
+	Scanner scanner = new Scanner(System.in);
 	taxes.calculerTotalTaxes(0);
 	//question 1
 	double montant1=100.0;
