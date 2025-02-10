@@ -8,7 +8,7 @@ public class MainTableau {
 int [] notes = {50,48,90,60,43,96};
 float moyenne=Tableau.moyenne(notes);
 Employe Belanger = new Employe(notes, "Belanger", "Claude");
-Employe.afficher();
-Employer.notesSousMoyenne();
+Belanger.afficher();
+Belanger.notesSousMoyenne();
 }
 }

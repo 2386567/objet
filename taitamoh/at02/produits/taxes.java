@@ -1,5 +1,5 @@
 package taitamoh.at02.produits;
-public class taxes {
+public class Taxes {
     public static final double TAUX_TPS=0.05;
     public static final double TAUX_TVQ=0.09975;
     private static double taxeTps;
@@ -14,7 +14,7 @@ return taxeTps;
 public static double getTaxesTvq(){ 
     return taxeTvq;
 }    
-public double getTotalTaxes(){
+public static double getTotalTaxes(){
     return totalTaxes;
 }  
 public static double calculerTaxeTps(double montant){
@@ -29,7 +29,7 @@ public static double calculerTotalTaxes(double montant){
 totalTaxes= calculerTaxeTps(montant)+calculerTaxeTvq(montant);
 return totalTaxes;
 }  
-public taxes (double montant){
+public Taxes (double montant){
     calculerTaxeTps(montant);
     calculerTaxeTvq(montant);
     calculerTotalTaxes(montant);

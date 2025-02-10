@@ -4,7 +4,7 @@ public class Produit {
 
 	private  String description;
 	private double prix;
-	private taxes taxesPrix;
+	private Taxes taxesPrix;
 	private double prixTotal;
 
 	public Produit(String description, double prix) {
@@ -27,10 +27,10 @@ public class Produit {
 
 	public void setPrix(double prix) {
 		this.prix = prix;
-		taxesPrix=new taxes (prix);
-		prixTotal=taxesPrix.getTotalTaxes();
+		taxesPrix=new Taxes (prix);
+		prixTotal=Taxes.getTotalTaxes();
 	}
-	public taxes getTaxesprix(){
+	public Taxes getTaxesprix(){
 		return taxesPrix;
 	}	
 	public double getPrixTotal(){
