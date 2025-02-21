@@ -69,4 +69,3 @@ public boolean estSurCercle(Point point){
     return resultat;
 }
 }
-//><,|

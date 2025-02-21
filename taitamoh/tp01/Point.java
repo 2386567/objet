@@ -1,5 +1,5 @@
 package taitamoh.tp01;
-import commun.Outils;
+
 /**
  * Classe qui représente un point sur un plan cartésien
  * @author Taita, Mohamed Abdoulaye 
