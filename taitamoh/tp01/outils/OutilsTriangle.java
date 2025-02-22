@@ -16,9 +16,9 @@ double sommet1Et2;
 double sommet2Et3;
 double sommet3Et1;
 double perimetre;
-    sommet1Et2 = Math.sqrt(Math.pow(sommet1.getX() - sommet2.getX(), 2)) + Math.pow(sommet1.getY() - sommet2.getY(), 2);
-    sommet2Et3 = Math.sqrt(Math.pow(sommet2.getX() - sommet3.getX(), 2)) + Math.pow(sommet2.getY() - sommet3.getY(), 2);
-    sommet3Et1 = Math.sqrt(Math.pow(sommet3.getX() - sommet1.getX(), 2)) + Math.pow(sommet3.getY() - sommet1.getY(), 2);
+    sommet1Et2 = Math.sqrt(Math.pow(sommet1.getX() - sommet2.getX(), 2) + Math.pow(sommet1.getY() - sommet2.getY(), 2));
+    sommet2Et3 = Math.sqrt(Math.pow(sommet2.getX() - sommet3.getX(), 2) + Math.pow(sommet2.getY() - sommet3.getY(), 2));
+    sommet3Et1 = Math.sqrt(Math.pow(sommet3.getX() - sommet1.getX(), 2)+ Math.pow(sommet3.getY() - sommet1.getY(), 2));
     perimetre = sommet2Et3 + sommet3Et1 + sommet1Et2;
     return perimetre;
 }
@@ -28,7 +28,7 @@ Point b = new Point(x2, y2, 'b');
 Point c = new Point(x3, y3, 'c');
 double perimetre;
 
-perimetre = perimetreTriangle(a.getX(), a.getY(), b.getX(), b.getY(), c.getX(), c.getY());
+perimetre = perimetreTriangle(a, b, c);
 
 return perimetre;
 }

@@ -43,7 +43,7 @@ public void setNom(char nom){
 } 
 public String coordonnees(){
     String coordonnees;
-   coordonnees = nom + "("+x+y+")";
+   coordonnees = nom + "(" + x + ", " + y + ")";
    return coordonnees;
 } 
 private String numeroQuandrant(){
@@ -62,19 +62,23 @@ if (x > 0 && y > 0) {
 return numeroQuadrant;
 } 
 public void afficher(){
-    System.out.println(coordonnees());
+    System.out.println("Point " + coordonnees());
     System.out.println("Position dans le plan cartesien: " + numeroQuandrant() );
 } 
 public double distance(Point autrePoint){
 double distance;
-distance=Math.sqrt(Math.pow(autrePoint.x - this.x, 2)+Math.pow(autrePoint.y - this.y, 2));
-return distance;
+distance = Math.sqrt(Math.pow(autrePoint.x - this.x, 2) + Math.pow(autrePoint.y - this.y, 2));
+return (int) (distance * 100 ) / 100.0;
 } 
 public void deplacer(int dx, int  dy){
 this.x+=dx;
 this.y+=dy;
 } 
 public boolean estAligne(Point autrePoint1, Point autrePoint2){
+    boolean estAligne;
+    if (autrePoint2 ==  null) {
+        estAligne = true;
+    }
 int aire;
 aire = this.x * (autrePoint1.y - autrePoint2.y) + autrePoint1.x * (autrePoint2.y - this.y) + autrePoint1.x * (autrePoint2.y - this.y)+
 autrePoint2.x * (this.y - autrePoint1.y);
