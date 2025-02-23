@@ -1,5 +1,9 @@
 package taitamoh.tp01;
-
+/** Cette classe représente un cercle sur le 
+ * plan cartésien
+ * @author Taita, Mohamed Abdoulaye
+ * 
+ */
 public class Cercle {
     private int rayon;
     private Point centre;

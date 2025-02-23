@@ -1,7 +1,15 @@
 package taitamoh.tp01.outils;
-
 import taitamoh.tp01.Cercle;
 import taitamoh.tp01.Point;
+/**
+ * Cette classe regroupe des méthodes
+ * pour traiter des triangles: calculer le périmètre
+ * l'aire, déterminer si un triangle est isocèle etc.
+ * 
+ * @author Taita, Mohamed Abdoulaye
+ * 
+ * 
+ */
 
 public class OutilsTriangle {
     
