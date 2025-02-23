@@ -16,7 +16,7 @@ public class OutilsTriangle {
 public static final float DELTA = 0.001f; 
     
 private OutilsTriangle(){
-        //
+        
 }
     
 public static double perimetreTriangle(Point sommet1, Point sommet2, Point sommet3){
@@ -47,7 +47,7 @@ public static double aireTriangle(Point sommet1, Point sommet2, Point sommet3){
     double perimetre = 0;
     double aire = 0;
 
-    perimetre = (sommet1Et2 + sommet2Et3 + sommet3Et1)/2;
+    perimetre = (sommet1Et2 + sommet2Et3 + sommet3Et1) / 2;
     aire = Math.sqrt(perimetre * (perimetre - sommet1Et2) * (perimetre - sommet2Et3) * (perimetre - sommet3Et1));
     
     return aire;

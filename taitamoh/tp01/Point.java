@@ -83,7 +83,7 @@ int aire;
 aire = this.x * (autrePoint1.y - autrePoint2.y) + autrePoint1.x * (autrePoint2.y - this.y) + autrePoint1.x * (autrePoint2.y - this.y)+
 autrePoint2.x * (this.y - autrePoint1.y);
 
-return aire ==0;
+return aire == 0;
 } 
 } 
 

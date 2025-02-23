@@ -1,4 +1,5 @@
 package taitamoh.tp01;
+import taitamoh.tp01.outils.OutilsTriangle;
 /**
  * Cette classe contient le programme principale qui permettra de
  *  tester les différentes autres classes: OutilsTriangle,Cercle et 
@@ -6,9 +7,6 @@ package taitamoh.tp01;
  * @author Taita, Mohamed Abdoulaye 
  * 
  */
-import taitamoh.at01.produit;
-import taitamoh.tp01.outils.OutilsTriangle;
-
 public class Geometrie {
 
 	public static void main(String[] args) {
