@@ -1,4 +1,4 @@
-package sandbox.exemplesclasses;
+package taitamoh.exemplesclasses.exoConstructeurs;
 
 //Cette classe contient les méthodes pour tester la classe Rectangle
 public class GestionRectangle {

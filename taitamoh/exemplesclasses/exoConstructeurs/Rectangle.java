@@ -1,4 +1,4 @@
-package sandbox.exemplesclasses;
+package taitamoh.exemplesclasses.exoConstructeurs;
 public class Rectangle {
 
 	// Attributs(ou champs d'instances) de la classe Rectangle

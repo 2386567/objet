@@ -1,4 +1,4 @@
-package exemplesclasses.exoCompo;
+package taitamoh.exemplesclasses.exoCompo;
 
 /**
  * 
@@ -55,7 +55,7 @@ public class Personne {
 	// mutateur de  date de dateNaissance
 	public void setDateNaissance(int an, int ms, int jr) {
 		// A completer
-		dateNaissance=new dateNaissance(an,ms,jr);
+		dateNaissance=new DateNaissance(an,ms,jr);
 	}
 
 	//  affiche les caracteristiques d'un personne

@@ -1,3 +1,5 @@
+package taitamoh.exemplesclasses.exoConstructeurs;
+
 public class cours {
     private String code;
     private String titre;

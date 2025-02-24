@@ -1,4 +1,4 @@
-package exemplesclasses.exoCompo;
+package taitamoh.exemplesclasses.exoCompo;
 
 
 public class TestPersonne {

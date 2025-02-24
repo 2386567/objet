@@ -1,3 +1,5 @@
+package taitamoh.exemplesclasses.exoConstructeurs;
+
 public class gestionCours{
 public static void main(String[] args) {
     cours zc6 = new cours ("420-ZC6-MO","algorithmie et programmation",1,6);

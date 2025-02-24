@@ -1,4 +1,4 @@
-package exemplesclasses.exoCompo;
+package taitamoh.exemplesclasses.exoCompo;
 
 import java.util.GregorianCalendar;// pour utiliser la classe GregorianCalendar
 

@@ -1,4 +1,4 @@
-package exemplesclasses.exoVariables;
+package taitamoh.exemplesclasses.exoVariables;
 
 public class MainUtilPuissance {
     public static void main(String[] args) {
