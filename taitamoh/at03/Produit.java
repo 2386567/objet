@@ -91,10 +91,11 @@ public class Produit {
 	public void lirePrix(Scanner clavier) {
 		// TO DO
 		boolean valide = false;
-		int prixProduit;
+		float prixProduit;
 		do {
 			System.out.println("Entrez le prix du produit : ");
-            prixProduit=clavier.nextInt();
+			if (clavier.hasNextFloat()) {
+            prixProduit=clavier.nextFloat();
 			clavier.nextLine();
 			if (prixProduit < MAX_PRIX) {
 				setPrix(prixProduit);
@@ -102,7 +103,9 @@ public class Produit {
 			}else{
 				System.out.println("Le prix du produit doit être entre 0 et " + MAX_PRIX);
 			}
-		} while (!valide);
+		}
+	}while (!valide);
+		
 	}
 
 	/*
@@ -129,18 +132,21 @@ public class Produit {
 	public static void main(String[] args) {
 		Scanner clavier = new Scanner(System.in);
 		// creer un produit vide
-		Produit prod1 = new Produit();
-		Produit prod2 = new Produit();
+		Produit prod = new Produit();
+		
 		// lire le numero du produit
-		prod1.lireNumero(clavier);
-		prod2.lireNumero(clavier);
+		prod.lireNumero(clavier);
 		// lire la description du produit.Appeler la methode lireDescription() 
+		prod.lireDescription(clavier);
 		// TO DO
 		
 		// lire le prix du produit. Appeler la methode lirePrix(()
+		prod.lirePrix(clavier);
+		
 		// TO DO
 		
 		// Afficher les informations du produit. Appeler la methode toString()
+		System.out.println(prod.toString());
 		// TO DO
 
 	}

@@ -43,6 +43,12 @@ public class GestionEntrepot {
 	 */
 	public static void initialiserEntrepot(ListeProduits listeProd) {
 		//TO DO
+	Produit prod1 = new Produit(100, "Table", 5000);
+	Produit prod2 = new Produit(150, "Chaise", 60);
+	Produit prod3 = new Produit(200, "lit", 500);
+	listeProd.ajouter(prod1);
+	listeProd.ajouter(prod2);
+	listeProd.ajouter(prod3);
 		
 	}
 
