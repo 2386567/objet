@@ -16,6 +16,7 @@ public class GestionEntrepot {
 		
 		System.out.println("\nAjout de produits");
 		//Appeler ajouterProduit() ici-bas
+		 ajouterProduit(listeProd);
 		//TO DO
 		
 		System.out.println("\nLes produits de l'entrepot apres ajout d'un produit");
@@ -23,6 +24,7 @@ public class GestionEntrepot {
 		
 		//Appeler supprimerProduit() ici-bas
 		//TO DO
+		supprimerProduit(listeProd);
 				
 		System.out.println("\nLes produits de l'entrep�t apres suppression d'un produit");
 		listeProd.listerProduits();
@@ -31,6 +33,7 @@ public class GestionEntrepot {
 		
 		//Appeler rechercherPoduit() ic-bas
 		//TO DO
+		rechercherPoduit(listeProd);
 		
 	}
 
@@ -53,15 +56,48 @@ public class GestionEntrepot {
 	}
 
 	public static void ajouterProduit(ListeProduits listeProd) {
-	
 		//TO DO
+		Produit prod = new Produit();
+		prod.lireNumero(clavier);
+		prod.lireDescription(clavier);
+		prod.lirePrix(clavier);
+		if (listeProd.ajouter(prod)) {
+			System.out.println("Le produit a été ajouté");
+		}else{
+			System.out.println("Éche d'ajout du produit");
+		}
+		
 	}
 
 	public static void supprimerProduit(ListeProduits listeProd) {
 		//TO DO
+		int numero;
+		boolean supprimer ;
+		System.out.println("Entrez le numéro du produit à supprimer");
+		numero = clavier.nextInt();
+		clavier.nextLine();
+	    supprimer = listeProd.supprimer(numero);
+		if (supprimer) {
+			System.out.println("Le produit a été supprimé");
+		}else{
+			System.out.println("Le produit est introuvable");
+		}
+
 	}
 
 	public static void rechercherPoduit(ListeProduits listeProd) {
 		//TO DO
+        int numero;
+
+		System.out.println("Entrez le numéro du produit à rechercher : ");
+        numero=clavier.nextInt();
+		numero = listeProd.trouverProduit(numero);
+		if (numero!=-1) {
+			Produit produitTrouve = listeProd.obtenirProduit(numero);
+			System.out.println("Produit trouvé :  " );
+			System.out.println(produitTrouve.toString());
+		}else{
+			System.out.println("Le produit est introuvable");
+		}
 	}
 }

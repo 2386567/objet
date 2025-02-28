@@ -94,10 +94,8 @@ public class ListeProduits {
 	 * tableau des produits. Elle retourne -1 si le produit n'existe pas
 	 */
 	public int trouverProduit(int numeroAChercher) {
-		int trouverProduit=0;
+		int trouverProduit=-1;
 		for (int j = 0; j < tabProduits.length; j++) {
-			
-		
 		if (tabProduits[j] != null && tabProduits[j].getNumero() == numeroAChercher ){
 			trouverProduit=j;
 			
@@ -114,24 +112,30 @@ public class ListeProduits {
 	public boolean supprimer(int numeroASupprimer) {
 		boolean tab=false;
 		int indice=0;
+		
         if (estVide()) {
-			System.out.println("La liste est vide");
-			tab=false;
-		}
-		numeroASupprimer=trouverProduit(numeroASupprimer);
-		if (indice ==-1) {
-			System.out.println("produit non trouvé");
-			tab=false;
-		}
+		System.out.println("La liste est vide");
+		tab = false;
+		}else {
+		indice=trouverProduit(numeroASupprimer);
+		if (indice == -1) {
+			tab = false;
+			}else{
+
+			
 		for (int i = indice + 1; i < nbProduits; i++) {
 			tabProduits[i - 1] = tabProduits[i];
 			}
-			tabProduits[nbProduits-1]=null;
+		
+		tabProduits[nbProduits-1]=null;
 			nbProduits--;
-			
-return tab;
+			tab = true;
 	}
-
+}
+			return tab;
+	}
+	
+	
 // pour tester les methode de cette classe
 	public static void main(String[] args) {
 		Scanner clavier = new Scanner(System.in);
