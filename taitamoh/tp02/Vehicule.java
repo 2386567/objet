@@ -1,11 +1,14 @@
 package taitamoh.tp02;
-/**
-* Description de la classe.
+import java.util.Scanner;
+/**  
+ * 
+*La classe Vehicule représente un véhicule du parc avec: sa couleur
+son numéro d'inventaire, sa marque, son modèle, 
+son année de fabrication et son prix.
 *
 * @author Taita, Mohamed Abdoulaye
 *
 */
-import java.util.Scanner;
 public class Vehicule {
     private String numeroInventaire;
     private String marque;
@@ -66,7 +69,7 @@ public Vehicule(){
 
 }
 public String toString(){
-  return String.format("%s %s %s %d %f", numeroInventaire, marque, modele, annee, prix);
+  return String.format("%s %s %10s %10d %2f", numeroInventaire, marque, modele, annee, prix);
 
 }
 public void lireNumeroInventaire(Scanner clavier){
