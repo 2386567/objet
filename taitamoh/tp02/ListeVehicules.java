@@ -67,7 +67,9 @@ public boolean ajouter(Vehicule vehicule){
 
 public void afficher(){
     for (int i = 0; i < nbVehicules; i++){
+        if (tabVehicules[i] != null) {
         System.out.println(tabVehicules[i].toString());
+        }
     }
 }
 
