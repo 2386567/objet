@@ -12,7 +12,7 @@ que l'ajout, la suppression et la recherche d'un véhicule.
 public class GestionParc {
     public static Scanner clavier = new Scanner(System.in);
     public static void main(String[] args){
-        ListeVehicules liste = new ListeVehicules(400);
+        ListeVehicules liste = new ListeVehicules(6);
         initialiserListeVehicules(liste);
         int choix;
       do{
@@ -71,33 +71,35 @@ public static void afficherVehicules(ListeVehicules listeVehicules){
     }
 }
 public static void ajouterVehicule(ListeVehicules listeVehicules){
-    String numeroInventaire = clavier.next();
     String marque;
     int annee;
     String modele;
     double prix;
+    boolean ajout = true;
     if (listeVehicules.estPlein()) {
         System.out.println("Impossible d'ajouter des véhicules, le parc est plein.");
-    }
-     System.out.println("Entrez le numéro d'inventaire");
+        ajout = false;
+    }else{
+    System.out.print("Entrez le numéro d'inventaire du véhicule: ");
+    String numeroInventaire = clavier.next();
         if (listeVehicules.indexDe(numeroInventaire) != -1) {
         System.out.println("Ajout impossible. Il existe déjà un véhicule avec ce numéro.");
     }else{
-        System.out.print("Entrez le numéro d'inventaire du véhicule: " + numeroInventaire);
-        numeroInventaire = clavier.next();
         System.out.print("Entrez la marque du véhicule: ");
         marque = clavier.next();
-        System.out.println("Entrez le modèle du véhicule: ");
+        System.out.print("Entrez le modèle du véhicule: ");
         modele = clavier.next();
-        System.out.println("Entrez l'année du véhicule:");
+        System.out.print("Entrez l'année du véhicule: ");
         annee = clavier.nextInt();
-        System.out.println("Entrez le prix du véhicule: ");
+        System.out.print("Entrez le prix du véhicule: ");
         prix = clavier.nextDouble();
         Vehicule v1 = new Vehicule(numeroInventaire, marque, modele, annee, prix);
         listeVehicules.ajouter(v1);
         System.out.println("Le véhicule de numéro d'inventaire " + numeroInventaire + " a été ajouté avec succès.");
     }
 }
+}
+
 public static void supprimerVehicule(ListeVehicules listeVehicules){
     System.out.print("Entrez le numéro d'imventaire du véhicule a supprimer: ");
     String numeroInventaire = clavier.next();
@@ -107,26 +109,34 @@ public static void supprimerVehicule(ListeVehicules listeVehicules){
             System.out.println("Il n'y a aucun véhicule avec ce numéro d'inventaire.");
         }else{
     
-    System.out.println("Voulez-vous vraiment supprimer le véhicule de numéro d'inventaire" +  numeroInventaire + "(O/N)?");
+    System.out.println("Voulez-vous vraiment supprimer le véhicule de numéro d'inventaire " +  numeroInventaire + " (O/N)?");
         String confirmation = clavier.next();
-    if(confirmation.equals("O")){
+    if(confirmation.toUpperCase().equals("O")){
          listeVehicules.supprimer(numeroInventaire);
-         System.out.println("Le véhicule de numéro d'inventaire " + numeroInventaire + "a été supprimé");
+         System.out.println("Le véhicule de numéro d'inventaire " + numeroInventaire + " a été supprimé");
     }else{
-        System.out.println("La suppression du véhicule de numéro d'inventaire" + numeroInventaire + "a été annulée");
+        System.out.println("La suppression du véhicule de numéro d'inventaire " + numeroInventaire + " a été annulée");
     }
 }
 }
 public static void rechercherVehicule(ListeVehicules listeVehicules){
+    System.out.print("Entrez le numéro du véhicule à rechercher: ");
     String numeroInventaire = clavier.next();
     int indice = listeVehicules.indexDe(numeroInventaire);
-    System.out.println("Entrez le numéro du véhicule à rechercher: ");
+    
+    if (listeVehicules.tabVehicules == null || listeVehicules.tabVehicules.length ==0) {
+        System.out.println("Il n'y a aucun véhicule à rechercher.");
+    }
 
     if (indice == -1) {
         System.out.println("Il n’y a aucun véhicule avec le numéro d'inventaire " + numeroInventaire +".");
     }else{
+        
        System.out.println("Véhicule trouvé: ");
-        System.out.println(listeVehicules.tabVehicules[indice].toString());
+       System.out.println(String.format("%s %s %10s %10s %2s", "Numéro", "Marque", "Modèle", "Année", "Prix"));
+       System.out.println("-------------------------------------------------------");
+       Vehicule v1 = listeVehicules.tabVehicules[indice];
+        System.out.println(String.format("%s %-1s %9s %8s %2s",v1.getNumeroInventaire(),v1.getMarque(),v1.getModele(),v1.getAnnee(),v1.getPrix()));
     }
 }
 public static void moyenneVehicules(ListeVehicules listeVehicules){

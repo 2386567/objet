@@ -32,13 +32,8 @@ public class ListeVehicules {
         return nbVehicules;
     }
 public boolean estPlein(){
-    boolean plein = false;
-    if (nbVehicules == tabVehicules.length){
-        plein = true;
-}else{
-    plein = false;
-}
-return plein;
+ return nbVehicules == tabVehicules.length;
+
 }
 
 public Vehicule obtenirVehicule(int indice){
