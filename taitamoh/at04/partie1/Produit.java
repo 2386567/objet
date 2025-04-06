@@ -22,7 +22,7 @@ public class Produit {
 		this(0, "", 0);
 	}
 
-	private void setNumero(int numero) {
+	protected void setNumero(int numero) {
 		if (numero >= MIN_NUMERO && numero <= MAX_NUMERO) {
 			this.numero = numero;
 		}
