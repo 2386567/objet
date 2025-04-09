@@ -7,19 +7,15 @@ import taitamoh.at01.produit;
 public class ProduitBase extends Produit {
     Scanner clavier = new Scanner(System.in);
     private String categorie;
-    private static final int MIN_CAR_CATEGORIE = 1;
-    private static final int MAX_CAR_CATEGORIE = 100;
+    private static final int MIN_CAR_CATEGORIE = 2;
+    private static final int MAX_CAR_CATEGORIE = 250;
 
     public ProduitBase(int numero, String description, double prix, String categorie) {
         super(numero, description, prix);
         setCategorie(categorie);
     }
     public ProduitBase(){
-        super();
-        setCategorie("inconnu");
-        setDescription("inconnu");
-        setPrix(0.0);
-        setNumero(0);
+        this(0,"inconnu",0,"inconnu");
     }
 
     public String getCategorie() {
@@ -43,7 +39,7 @@ public class ProduitBase extends Produit {
            setCategorie(categorie);
            valide = true;
            }else{
-            System.out.println("La catégorie doit contenir entre 1 et 100 caractères");
+            System.out.println("La catégorie doit contenir entre " +MIN_CAR_CATEGORIE + "et" + MAX_CAR_CATEGORIE);
            }
          } while (!valide);
     }
@@ -52,6 +48,14 @@ public class ProduitBase extends Produit {
     public String toString(){
         return super.toString() + "\nCatégorie : " + categorie;
     }
+
+    @Override
+    public void lireRenseignements(Scanner clavier) {
+        System.out.println("Entrez les renseignements du produit");
+        lireNumero(clavier);
+        lireDescription(clavier);
+        lirePrix(clavier);
+        }
 
     public static void main(String[] args) {
         Scanner clavier = new Scanner(System.in);

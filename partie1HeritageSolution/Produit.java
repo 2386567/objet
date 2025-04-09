@@ -1,7 +1,11 @@
-package taitamoh.at04.partie1;
+package enseignant.at04.partie1;
 
 import java.util.Scanner;
 
+/**
+ * Cette classe contient les attributs et les m�thodes d'un Produit
+ * 
+ */
 public class Produit {
 	private static final int MIN_CAR_DESCRIPTION = 2;
 	private static final int MAX_CAR_DESCRIPTION = 250;
@@ -10,7 +14,7 @@ public class Produit {
 	private static final int MIN_NUMERO = 0;
 	private int numero;
 	private String description;
-	protected double prix;
+	private double prix;
 
 	public Produit(int numero, String description, double prix) {
 		setNumero(numero);
@@ -19,11 +23,11 @@ public class Produit {
 	}
 
 	public Produit() {
-		this(0, "inconnu", 0);
+		this(0, "iconnu", 0);
 	}
 
-	protected void setNumero(int numero) {
-		if (numero >= MIN_NUMERO && numero <= MAX_NUMERO) {
+	private void setNumero(int numero) {
+		if (numero > MIN_NUMERO && numero <= MAX_NUMERO) {
 			this.numero = numero;
 		}
 	}
@@ -34,9 +38,10 @@ public class Produit {
 
 	public void setDescription(String description) {
 		if (description.length() <= MAX_CAR_DESCRIPTION &&
-				description.length() >= MIN_CAR_DESCRIPTION) {
+				description.length() >= MAX_CAR_DESCRIPTION) {
 			this.description = description;
 		}
+		this.description = description;
 	}
 
 	public double getPrix() {
@@ -48,50 +53,53 @@ public class Produit {
 	}
 
 	public void setPrix(double prix) {
-		if (prix > 0 && prix <= MAX_PRIX) {
+		if (prix > 0 && prix < MAX_PRIX) {
 			this.prix = prix;
 		}
 	}
 
-	public double prixApresRabais(double pourcentage) {
-		return prix - (pourcentage / 100) * prix;
+	// Modification de l'atelier 4
+	public void appliquerRabais(double pourcentage) {
+		setPrix(prix - (pourcentage / 100) * prix);
 	}
 
+	// Modification de l'atelier 4
 	@Override
 	public String toString() {
-		return "Numéro: " + numero + "\n" +
-				"Description : " + description + "\n" +
-				"Prix: " + String.format("%.2f", prix) + "$";
+		return "\nNumero: " + numero + "\nDescription: "
+				+ description + "\nPrix: " + String.format("%.2f$", prix);
+	}
+
+	// Modification de l'atelier 4
+	public double calculerPrixVente() {
+		return getPrix();
 	}
 
 	/*
-	 * Demande à lire un numéro de produit à partir du clavier tant qu'il n'est pas
-	 * valide.
-	 * Elle affecte le numéro valide à l'attribut numero.
+	 * Demande de lire un numero de produit a partir du clavier tant qu'il n'est pas
+	 * valide. Elle affecte le numero valide a l'attribut numero.
 	 */
 	public void lireNumero(Scanner clavier) {
 		boolean valide = false;
 		int numeroLu;
 
 		do {
-			System.out.print("Entrez le numéro du produit: ");
+			System.out.print("Entrez le num�ro du produit: ");
 			numeroLu = clavier.nextInt();
 			clavier.nextLine();
 			if (numeroLu >= MIN_NUMERO && numeroLu <= MAX_NUMERO) {
 				setNumero(numeroLu);
 				valide = true;
 			} else {
-				System.out.println(
-						"Le numéro du produit doit contenir ente  "
-								+ MIN_NUMERO + "caractères et " + MAX_NUMERO);
+				System.out.println("Le num�ro du produit doit contenir ente  " +
+						MIN_NUMERO + "caract�res et " + MAX_NUMERO);
 			}
 		} while (!valide);
 	}
 
 	/*
-	 * Demande à lire un prix de produit à partir du clavier tant qu'il n'est pas
-	 * valide.
-	 * Elle affecte le numéro valide à l'attribut prix.
+	 * Demande de lire un prix de produit � partir du clavier tant qu'il n'est pas
+	 * valide. Elle affecte le num�ro valide � l'attribut prix.
 	 */
 	public void lirePrix(Scanner clavier) {
 		boolean valide = false;
@@ -106,15 +114,16 @@ public class Produit {
 				setPrix(prixLu);
 				valide = true;
 			} else {
-				System.out.println("Le prix du produit doit être entre 0 et  " + MAX_PRIX);
+				System.out.println("Le prix du produit doit �tre entre 0 et  " +
+						MAX_PRIX);
 			}
 		} while (!valide);
 	}
 
 	/*
-	 * Demande à lire une description de produit à partir du clavier tant qu'il
-	 * n'est pas valide.
-	 * Elle affecte la description valide à l'attribut description.
+	 * Demande de lire une description de produit a partir du clavier tant qu'il
+	 * n'est pas valide. Elle affecte la description valide � l'attribut
+	 * description.
 	 */
 	public void lireDescription(Scanner clavier) {
 		boolean valide = false;
@@ -128,40 +137,17 @@ public class Produit {
 				setDescription(descriptionLue);
 				valide = true;
 			} else {
-				System.out.println("La description  du produit doit être entre " +
-						MIN_CAR_DESCRIPTION
-						+ "caractères et " + MAX_CAR_DESCRIPTION);
+				System.out.println("La description  du produit doit �tre entre " +
+						MIN_CAR_DESCRIPTION + "caract�res et " + MAX_CAR_DESCRIPTION);
 			}
 		} while (!valide);
 	}
 
-	public double calculerPrixVente() {
-		return prix;
-	}
-
-	public void appliquerRabais(double pourcentage) {
-		setPrix(prix - (pourcentage / 100) * prix);
-	}
-    
-	public void lireRenseignements(Scanner clavier){
-		System.out.println("Entrez les renseignements du produit ");
-		lireNumero(clavier);
-		lireDescription(clavier);
-        lirePrix(clavier);
-    }
-	   
-
 	public static void main(String[] args) {
-		Scanner clavier = new Scanner(System.in);
+		// Scanner clavier = new Scanner(System.in);
 		Produit prod1 = new Produit(1, "Stylo", 12.25);
+		// tester toString()
 		System.out.println(prod1);
-		Produit prod2 = new Produit();
-		prod2.lireNumero(clavier);
-
-		prod2.lireDescription(clavier);
-		prod2.lirePrix(clavier);
-
-		System.out.println("Informations du poduit: " + prod2.toString());
 
 	}
 }

@@ -13,7 +13,8 @@ public class GestionEntrepot {
 		initialiserEntrepot(listeProd);
 		System.out.println("\nLes produits de l'entrepôt");
 		listeProd.listerProduits();
-		System.out.println("\nAjout d'un produit");
+		/* 
+		 * System.out.println("\nAjout d'un produit");
 		ajouterProduit(listeProd);
 		System.out.println("\nLes produits de l'entrepôt");
 		listeProd.listerProduits();
@@ -23,6 +24,7 @@ public class GestionEntrepot {
 		listeProd.listerProduits();
 		System.out.println("\nRecherche de produits");
 		rechercherPoduit(listeProd);
+		*/
 	}
 
 	/*
@@ -33,9 +35,9 @@ public class GestionEntrepot {
 	 * 
 	 */
 	public static void initialiserEntrepot(ListeProduits listeProd) {
-		listeProd.ajouter(new Produit(100, "Table", 500));
-		listeProd.ajouter(new Produit(150, "Chaise", 60));
-		listeProd.ajouter(new Produit(200, "lit", 500));
+		listeProd.ajouter(new ProduitBase(1, "Boite de 1L", 3.25, "Lait"));
+		listeProd.ajouter(new ProduitTaxableTPS(2,"Gérer son stress",15.75,'l'));
+		listeProd.ajouter(new ProduitTaxable(3,"Tapis souris confort",15.75));
 	}
 
 	public static void ajouterProduit(ListeProduits listeProd) {
@@ -73,7 +75,7 @@ public class GestionEntrepot {
 		} else {
 			produit = listeProd.obtenirProduit(indiceTrouve);
 			System.out.print("Voici le produit que vous cherchez:");
-			System.out.println(produit);
+			System.out.println(produit.toString());
 		}
 	}
 }
