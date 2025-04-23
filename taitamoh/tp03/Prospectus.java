@@ -9,10 +9,14 @@ public class Prospectus extends Courrier{
     private String titre;
     private String region;
 
+
     public Prospectus(int poids, int optionEnvoi, String region, String titre){
         super(poids, optionEnvoi);
         this.titre = titre;
         this.region = region;
+       
+        
+   
 
     }
 
@@ -21,7 +25,7 @@ public class Prospectus extends Courrier{
     @Override
     public double calculerTarif(){
         double tarif= 0;
-        double poids = 0;
+        double poids = getPoids();
       
         if (poids <=50 ) {
             tarif = 0.35;
@@ -41,12 +45,15 @@ public class Prospectus extends Courrier{
         int type = getOptionEnvoi();
         String optionEnvoiStr;
     
-        if (type== ENVOI_REGULIER) {
+        if (getOptionEnvoi() == ENVOI_REGULIER) {
            optionEnvoiStr = "régulier";
         }else{
            optionEnvoiStr = "rapide";
         }
-    return "Prospectus : " + "\nPoids : " + poids + "\nOption d'envoi : " + getOptionEnvoi() + "\nTarif : " + String.format("%.2f", calculerTarif() + "$") +
-    "\nTitre : " +  titre + "\nRegion : " + region;
+    return "Prospectus: " 
+    + "\nPoids : " + poids 
+    + "\nOption d'envoi : " + optionEnvoiStr
+    + "\nTarif : " + String.format("%.2f$", calculerTarif()) 
+    +"\nTitre : " +  titre + "\nRegion : " + region;
     }
 }

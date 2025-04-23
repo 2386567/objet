@@ -1,9 +1,8 @@
 package taitamoh.tp03;
 /**
- * classe contenant un tbleau contanant les courriers
+ * classe contenant un tableau contanant les courriers
  * reçus dans le bureau de poste et le nombre 
  * de courrier dans le tableau
- * par prospectus
  * @author Mohamed Abdoulaye Taita
  */
 public class ListeCourrier {
@@ -73,7 +72,8 @@ public class ListeCourrier {
                   break;
              }
              if (afficherCourrier) {
-                System.out.println(c);
+                System.out.println(c.toString());
+                System.out.println();
              }
 
         }

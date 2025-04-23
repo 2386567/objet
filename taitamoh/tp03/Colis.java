@@ -10,11 +10,18 @@ public class Colis extends Courrier {
     private static final double TARIF_UNITAIRE = 0.35;
     private double largeur;
     private double hauteur;
+    private String adrDestinataire;
+    private String adrExpediteur;
+    
+    
 
     public Colis(int poids, int optionEnvoi, String adrDestinataire, String adrExpediteur, double hauteur, double largeur){
         super(poids, optionEnvoi);
         this.hauteur = hauteur;
         this.largeur = largeur;
+        this.adrDestinataire = adrDestinataire;
+        this.adrExpediteur = adrExpediteur;
+       
     }
 
     private double dimensionCumulee(){
@@ -27,7 +34,7 @@ public class Colis extends Courrier {
         double dimension = dimensionCumulee();
         double poids = 0;
 
-        if (dimension <= 200) {
+        if (dimension > 200) {
             tarif = TARIF_BASE + TARIF_UNITAIRE * poids;
         }else{
             tarif = TARIF_BASE + TARIF_UNITAIRE * poids + 55;
@@ -44,15 +51,20 @@ public class Colis extends Courrier {
         int type = getOptionEnvoi();
         String optionEnvoiStr;
     
-        if (type == ENVOI_REGULIER) {
+        if (getOptionEnvoi() == ENVOI_REGULIER) {
            optionEnvoiStr = "régulier";
         }else{
            optionEnvoiStr = "rapide";
         }
 
-        return "Colis : " + "\nAdresse de l'expéditeur : " + "\nAdresse du destinataire : " + "\nPoids : " + poids + 
-        "\nOption d'envoi : " + getOptionEnvoi() + "\nTarif : " + String.format("%.2f", calculerTarif() + "$")  + 
-        "\nLargeur : " + largeur + "\nHauteur : " + hauteur + "\nDimension cumulee : " + dimensionCumulee();
+        return "Colis: " + "\nAdresse de l'expéditeur : " + adrExpediteur
+        + "\nAdresse du destinataire : " + adrDestinataire
+        + "\nPoids : " + getPoids()
+        + "\nOption d'envoi : " + optionEnvoiStr
+        + "\nTarif : " + String.format("%.2f$", calculerTarif())  
+        + "\nLargeur : " + largeur
+        + "\nHauteur : " + hauteur 
+        + "\nDimension cumulee : " + dimensionCumulee();
     
     }
 }

@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * Sous classe de courrier contenant l'option
- * d'envoi par courrier
+ * d'envoi par Lettre
  * @author Mohamed Abdoulaye Taita
  */
 
@@ -13,10 +13,12 @@ public class Lettre extends Courrier {
     private String adrExpediteur;
     private String adrDestinataire;
     
+    
 public Lettre(int poids, int optionEnvoi, String adrExpediteur, String adrDestinataire){
     super(poids, optionEnvoi);
     this.adrExpediteur = adrExpediteur;
     this.adrDestinataire = adrDestinataire;
+   
    
 
 }
@@ -25,7 +27,7 @@ public Lettre(int poids, int optionEnvoi, String adrExpediteur, String adrDestin
 
 @Override
 public double calculerTarif(){
-    double poids = 0;
+    double poids = getPoids();
     double prix = 0 ;
 
     if (poids <= 30) {
@@ -51,14 +53,17 @@ public String toString(){
     int type = getOptionEnvoi();
     String optionEnvoiStr;
 
-    if (type== ENVOI_REGULIER) {
+    if (getOptionEnvoi() == ENVOI_REGULIER) {
        optionEnvoiStr = "régulier";
     }else{
        optionEnvoiStr = "rapide";
     }
 
-    return "Lettre : " +  "\n Adresse de l'expéditeur : " + adrExpediteur + "\nAdresse du destinataire : " + adrDestinataire +
-    "\nPoids : " + poids + "\n Option d'envoi : " +type + "\nTarif : " + String.format("%.2f", calculerTarif() + "$");
+    return "Lettre: " +  "\n Adresse de l'expéditeur : " + adrExpediteur 
+    + "\nAdresse du destinataire : " + adrDestinataire 
+    +"\nPoids : " + getPoids()
+    + "\n Option d'envoi : " + optionEnvoiStr
+    + "\nTarif : " + String.format("%.2f$", calculerTarif());
 }
 
 }
