@@ -1,4 +1,4 @@
-package taitamoh.at05.partie2;
+package taitamoh.at05.partie1;
 
 /**
  * Cette classe contient les attributs et les m�thodes d'une liste de produits

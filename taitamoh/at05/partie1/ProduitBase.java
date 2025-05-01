@@ -1,4 +1,4 @@
-package taitamoh.at05.partie2;
+package taitamoh.at05.partie1;
 
 import java.util.Scanner;
 
@@ -24,9 +24,9 @@ public class ProduitBase extends Produit {
 
 	}
 
-	public ProduitBase(int numero, String description, double prix, String categorie) {
+	public ProduitBase(int numero, String description, double prix) {
 		super(numero, description, prix);
-		setCategorie(categorie);
+		
 	}
 
 	public ProduitBase() {
@@ -60,6 +60,11 @@ public class ProduitBase extends Produit {
 	public void lireRenseignements(Scanner clavier) {
 		super.lireRenseignements(clavier);
 		lireCategorie(clavier);
+	}
+
+	@Override
+	public double calculerPrixVente(){
+		return prix;
 	}
 	public static void main(String[] args) {
 		Scanner clavier = new Scanner(System.in);

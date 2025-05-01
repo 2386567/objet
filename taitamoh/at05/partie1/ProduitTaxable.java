@@ -1,4 +1,4 @@
-package taitamoh.at05.partie2;
+package taitamoh.at05.partie1;
 
 import java.util.Scanner;
 

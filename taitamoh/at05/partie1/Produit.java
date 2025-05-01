@@ -1,4 +1,4 @@
-package taitamoh.at05.partie2;
+package taitamoh.at05.partie1;
 
 import java.util.Scanner;
 
@@ -6,7 +6,7 @@ import java.util.Scanner;
  * Cette classe contient les attributs et les m�thodes d'un produit
  *  
  */
-public class Produit {
+public abstract class Produit {
 	private static final int MIN_CAR_DESCRIPTION = 2;
 	private static final int MAX_CAR_DESCRIPTION = 250;
 	private static final int MAX_PRIX = 20000;
@@ -67,9 +67,8 @@ public class Produit {
 	+ description + "\nPrix: " + String.format("%.2f$", prix);
 	}
 	// Modification de l'atelier 4
-	public double calculerPrixVente() {
-		return getPrix();
-	}
+	public abstract double calculerPrixVente();
+	
 
 	/*
 	 * Demande � lire un num�ro de produit � partir du clavier tant qu'il n'est pas
