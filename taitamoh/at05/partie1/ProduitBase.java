@@ -26,11 +26,8 @@ public class ProduitBase extends Produit {
 
 	public ProduitBase(int numero, String description, double prix) {
 		super(numero, description, prix);
-		
-	}
+		setCategorie(description);
 
-	public ProduitBase() {
-		this(0, "inconnu", 0, "inconnu");
 	}
 
 	@Override
@@ -55,6 +52,7 @@ public class ProduitBase extends Produit {
 		} while (!valide);
 
 	}
+
 	// partie 2
 	@Override
 	public void lireRenseignements(Scanner clavier) {
@@ -63,12 +61,13 @@ public class ProduitBase extends Produit {
 	}
 
 	@Override
-	public double calculerPrixVente(){
-		return prix;
+	public double calculerPrixVente() {
+		return getPrix();
 	}
+
 	public static void main(String[] args) {
 		Scanner clavier = new Scanner(System.in);
-		ProduitBase prod1 = new ProduitBase(3, "Boite de 1 litre lait en carton Quebon 2%", 3.25, "Lait");
+		ProduitBase prod1 = new Produit(3, "Boite de 1 litre lait en carton Quebon 2%", 3.25, "Lait");
 		// tester toSring()
 		System.out.println(prod1);
 		// tester lireCategorie()

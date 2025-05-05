@@ -9,8 +9,8 @@ import java.util.Scanner;
  * couches pour b�b�s, les biberons, les sacs jetables pour de biberons�).
  *
  */
-public class ProduitTaxableTPS extends Produit {
-	protected static final double TPS = 0.05;
+public class ProduitTaxableTPS extends Produit implements Taxable {
+	public static final double TPS = 0.05;
 	private static final char LIVRE = 'l';
 	private static final char BEBE = 'b';
 
@@ -39,7 +39,7 @@ public class ProduitTaxableTPS extends Produit {
 
 	@Override
 	public double calculerPrixVente() {
-		return super.calculerPrixVente() + getPrix() * TPS;
+		return getPrix() + calculerTaxes();
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class ProduitTaxableTPS extends Produit {
 		// le type que s'il n'est pas un caractere null
 		String typeAffiche = "";
 		if (type != '\u0000') {
-			typeAffiche = "\nType de produit: " + type ;
+			typeAffiche = "\nType de produit: " + type;
 		}
 		return super.toString() + typeAffiche + "\nPrix incluant les taxes : "
 				+ String.format("%.2f$", calculerPrixVente());
@@ -73,12 +73,34 @@ public class ProduitTaxableTPS extends Produit {
 			}
 		} while (!valide);
 	}
-	//partie2
+
+	// partie2
 	@Override
 	public void lireRenseignements(Scanner clavier) {
 		super.lireRenseignements(clavier);
 		lireType(clavier);
 	}
+
+	@Override
+	public double calculerTaxes() {
+
+		return getPrix() * TPS;
+
+	}
+
+	@Override
+	public boolean equals(Object objet) {
+		boolean egal = false;
+
+		if (objet != null && objet instanceof ProduitTaxableTPS) {
+
+			ProduitTaxableTPS autre = (ProduitTaxableTPS) objet;
+			egal = this.getNumero() == autre.getNumero() && this.type == autre.type;
+		}
+
+		return egal;
+	}
+
 	public static void main(String[] args) {
 		Scanner clavier = new Scanner(System.in);
 		// tester toString()

@@ -2,11 +2,13 @@ package taitamoh.at05.partie1;
 
 import java.util.Scanner;
 
+import taitamoh.at01.produit;
+
 /**
  * Cette classe contient les attributs et les m�thodes d'un produit
- *  
+ * 
  */
-public abstract class Produit {
+public abstract class Produit implements Comparable<Produit> {
 	private static final int MIN_CAR_DESCRIPTION = 2;
 	private static final int MAX_CAR_DESCRIPTION = 250;
 	private static final int MAX_PRIX = 20000;
@@ -60,15 +62,16 @@ public abstract class Produit {
 	public void appliquerRabais(double pourcentage) {
 		setPrix(prix - (pourcentage / 100) * prix);
 	}
+
 	// Modification de l'atelier 4
 	@Override
 	public String toString() {
-		return "Numero: " + numero + "\nDescription: " 
-	+ description + "\nPrix: " + String.format("%.2f$", prix);
+		return "Numero: " + numero + "\nDescription: "
+				+ description + "\nPrix: " + String.format("%.2f$", prix);
 	}
+
 	// Modification de l'atelier 4
 	public abstract double calculerPrixVente();
-	
 
 	/*
 	 * Demande � lire un num�ro de produit � partir du clavier tant qu'il n'est pas
@@ -135,21 +138,46 @@ public abstract class Produit {
 			}
 		} while (!valide);
 	}
-	
-	//partie 2
-	//Lire tous les renseignements du produit
-	//Cette m�thode est red�finie dans les classes filles
+
+	// partie 2
+	// Lire tous les renseignements du produit
+	// Cette m�thode est red�finie dans les classes filles
 	public void lireRenseignements(Scanner clavier) {
 		System.out.println("Entrez les renseignements du produit");
 		lireNumero(clavier);
 		lireDescription(clavier);
 		lirePrix(clavier);
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		boolean estEgal = false;
+
+		if (obj != null && obj instanceof Produit) {
+			Produit autre = (Produit) obj;
+			estEgal = this.numero == autre.numero;
+		}
+		return estEgal;
+	}
+
+	@Override
+	public int compareTo(Produit autreProduit) {
+		int compNumero;
+		if (this.getPrix() > autreProduit.getPrix()) {
+			compNumero = 1;
+		} else if (this.getPrix() < autreProduit.getPrix()) {
+			compNumero = -1;
+		} else {
+			compNumero = 0;
+		}
+		return compNumero;
+	}
+
 	public static void main(String[] args) {
 		Scanner clavier = new Scanner(System.in);
-		Produit prod1 = new Produit(1, "Stylo", 12.25);
+		Produit prod1 = new ProduitBase(1, "Stylo", 12.25);
 		// tester toString()
 		System.out.println(prod1);
-		
+
 	}
 }
