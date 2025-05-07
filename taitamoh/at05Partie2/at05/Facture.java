@@ -1,4 +1,4 @@
-package taitamoh.at05Partie2;
+package taitamoh.at05Partie2.at05;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +13,6 @@ public class Facture extends JFrame implements ActionListener {
     private JButton btnCalculer = new JButton ("Calculer");
     private JButton btnEffacer = new JButton ("Effacer");
 
-    private JPanel panel =  new JPanel();
 
     private static final double TPS = 0.05;
     private static final double TVQ = 0.09975;
