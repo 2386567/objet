@@ -5,13 +5,13 @@ package taitamoh.tp04;
  * les poids idéals et le poids actuel d'une personne
  * afin de les comparer avec les autres objets
  * de type personne.
- * 
+ * @author Mohamed Abdoulaye Taita
  */
-public abstract class Personne {
-    private String nom;
-    private double poids;
-    private int taille;
-    private String sexe;
+public abstract class Personne implements PoidsIdeal, Comparable<Personne> {
+    protected String nom;
+    protected double poids;
+    protected int taille;
+    protected String sexe;
 
     public void setNom(String nom) {
         this.nom = nom;
@@ -58,6 +58,18 @@ public abstract class Personne {
 
     @Override
     public int compareTo(Personne p) {
+       int poidsIdeal;
+        double p1 = Math.abs(this.poids - this.calculerPoidsIdeal());
+        double p2 = Math.abs(p.poids - p.calculerPoidsIdeal());
+
+        if (p1 < p2) {
+            poidsIdeal = 1;
+        }else if (p1 > p2) {
+            poidsIdeal = -1;
+        }else{
+            poidsIdeal = 0;
+        }
+     return  poidsIdeal;
 
     }
 
