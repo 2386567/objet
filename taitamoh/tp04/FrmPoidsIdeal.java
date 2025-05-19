@@ -1,15 +1,16 @@
 package taitamoh.tp04;
+import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.plaf.basic.BasicOptionPaneUI.ButtonActionListener;
+
+import java.awt.*;
+import java.awt.event.*;
 /**
  * Cette classe contiendra une fenetre
  * graphique qui permettra de calculer
  * et comparer le poids idéal d'une personne.
  * @author Mohamed Abdoulaye Taita
  */
-import javax.swing.*;
-import javax.swing.plaf.basic.BasicOptionPaneUI.ButtonActionListener;
-
-import java.awt.*;
-import java.awt.event.*;
 
 public class FrmPoidsIdeal extends JFrame {
 
@@ -28,32 +29,44 @@ public class FrmPoidsIdeal extends JFrame {
 
     public FrmPoidsIdeal(){
         super("Poids idéal");
-        setSize(320, 220);
+        setSize(400, 250);
+        setLocationRelativeTo(null);
         setLayout(new FlowLayout());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        add(new JLabel("Votre Nom: "));
-        add(txtNom);
-        add(new JLabel("Votre Poids Kg :"));
-        add(txtPoids);
-        add(new JLabel("Votre taille en cm :"));
-        add(txtTaille);
-        
+        JPanel panel = new JPanel(new GridLayout(5,2,5,5));
+        panel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+
+        panel.add(new JLabel("Votre Nom: "));
+        panel.add(txtNom);
+        panel.add(new JLabel("Votre Poids Kg :"));
+        panel.add(txtPoids);
+        panel.add(new JLabel("Votre taille en cm :"));
+        panel.add(txtTaille);
+
+        panel.add(new JLabel("Vous êtes :"));
+        JPanel panelSexe = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        panel.add(panelSexe);
         grpSexe.add(radioHomme);
         grpSexe.add(radioFemme);
-        add(radioHomme);
-        add(radioFemme);
-
-        add(boutonCalculer);
-        add(boutonEffacer);
-        add(buttonComparer);
+        panelSexe.add(radioHomme);
+        panelSexe.add(radioFemme);
+        
+  
+        JPanel panelBoutons = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        panelBoutons.add(boutonCalculer);
+        panelBoutons.add(boutonEffacer);
+        panelBoutons.add(buttonComparer);
 
         ButtonListener listener = new ButtonListener();
         boutonCalculer.addActionListener(listener);
         boutonEffacer.addActionListener(listener);
         buttonComparer.addActionListener(listener);
 
-        setLocationRelativeTo(null);
+        setLayout(new BorderLayout());
+        add(panel, BorderLayout.CENTER);
+        add(panelBoutons,BorderLayout.SOUTH);
+
 
         setVisible(true);
     }
@@ -105,10 +118,6 @@ public class FrmPoidsIdeal extends JFrame {
         
     
 
-
-        public static void main(String[] args) {
-            new FrmPoidsIdeal();
-        }
     
 }
 
